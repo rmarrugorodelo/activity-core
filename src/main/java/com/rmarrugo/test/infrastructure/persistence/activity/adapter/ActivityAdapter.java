@@ -11,8 +11,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @RequiredArgsConstructor
@@ -46,10 +48,11 @@ public class ActivityAdapter
     }
 
     @Override
-    public Supplier<Stream<Activity>> find(PageAsk pageAsk) {
-        return jpaRepository.findAll(
-                PageRequest.of(pageAsk.getPage(), pageAsk.getSize())
-        ).map(mapper::toDomain);
+    public List<Activity> findAll() {
+        return jpaRepository.findAll()
+                .stream()
+                .map(mapper::toDomain)
+                .collect(Collectors.toList());
     }
 
 }

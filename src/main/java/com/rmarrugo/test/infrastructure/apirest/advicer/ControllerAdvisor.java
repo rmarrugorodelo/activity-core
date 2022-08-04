@@ -47,7 +47,7 @@ public class ControllerAdvisor {
                                                 HttpServletRequest request) {
         return new ErrorResponseDto(LocalDateTime.now(), ex.getErrorCode().getCode(),
                 httpStatus.value(), ex.getErrorCode().getDescription(),
-                ex.getMessage(), request.getRequestURL().toString());
+                ex.getMessage(), request.getRequestURL().toString(), null);
     }
 
 }

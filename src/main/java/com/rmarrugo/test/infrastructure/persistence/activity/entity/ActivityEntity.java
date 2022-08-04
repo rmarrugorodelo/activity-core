@@ -18,6 +18,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import java.time.LocalDateTime;
 
 @Builder
 @Getter
@@ -36,11 +37,17 @@ public class ActivityEntity {
     private String description;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+    @Column(nullable = false, length = 20)
     private ActivityStatus status;
 
     @ManyToOne
     @JoinColumn(name = "employee_id", nullable = false)
     private EmployeeEntity employee;
+
+    @JoinColumn(name = "execution_date")
+    LocalDateTime executionDate;
+
+    @JoinColumn(name = "completed_date")
+    LocalDateTime completedDate;
 
 }

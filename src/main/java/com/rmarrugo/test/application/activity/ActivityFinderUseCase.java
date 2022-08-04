@@ -3,10 +3,14 @@ package com.rmarrugo.test.application.activity;
 import com.rmarrugo.test.domain.activity.Activity;
 import com.rmarrugo.test.domain.activity.port.ActivityFinder;
 import com.rmarrugo.test.domain.activity.port.ActivityFinderRepository;
+import com.rmarrugo.test.domain.common.PageAsk;
 import com.rmarrugo.test.domain.exception.ErrorCode;
 import com.rmarrugo.test.domain.exception.NotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.function.Supplier;
+import java.util.stream.Stream;
 
 @Service
 @RequiredArgsConstructor
@@ -20,6 +24,11 @@ public class ActivityFinderUseCase implements ActivityFinder {
                 .orElseThrow(
                         () -> new NotFoundException(ErrorCode.ACTIVITY_NOT_FOUND)
                 );
+    }
+
+    @Override
+    public Supplier<Stream<Activity>> find(PageAsk pageAsk) {
+        return finderRepository.find(pageAsk);
     }
 
 }

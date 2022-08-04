@@ -1,11 +1,10 @@
 package com.rmarrugo.test.infrastructure.apirest.activity.dto;
 
-import com.rmarrugo.test.domain.activity.ActivityStatus;
-import com.rmarrugo.test.domain.employee.Employee;
 import com.rmarrugo.test.infrastructure.apirest.employee.dto.EmployeeResponse;
 import lombok.Builder;
 import lombok.Value;
-import lombok.With;
+
+import java.time.LocalDateTime;
 
 @Builder
 @Value
@@ -15,5 +14,8 @@ public class ActivityResponse {
     String description;
     String status;
     EmployeeResponse employee;
+    LocalDateTime executionDate;
+    LocalDateTime completedDate;
+    Long days;
 
 }

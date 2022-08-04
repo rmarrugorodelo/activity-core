@@ -10,4 +10,6 @@ public interface ActivityWriter {
 
     void delete(Long id);
 
+    void complete(Long id);
+
 }

@@ -1,7 +1,7 @@
 package com.rmarrugo.test.infrastructure.persistence.activity.repository;
 
 import com.rmarrugo.test.infrastructure.persistence.activity.entity.ActivityEntity;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
-public interface ActivityJpaRepository extends JpaRepository<ActivityEntity, Long> {
+public interface ActivityJpaRepository extends PagingAndSortingRepository<ActivityEntity, Long> {
 }
